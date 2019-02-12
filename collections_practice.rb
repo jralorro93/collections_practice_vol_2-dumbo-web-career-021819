@@ -13,9 +13,16 @@ def contain_a(array)
 end 
 
 def first_wa(array)
-  
   array.find do |name| 
-    binding pry
-    name.include?("wa")
+    name.match(/wa/)
   end 
 end 
+
+def remove_non_strings(array)
+  array.delete_if { |obj| !(obj.is_a? String) }
+end 
+
+def count_elements(array)
+  array.group_by(&:itself).map{|k, v| k.merge(count: v.length)}
+end 
+
